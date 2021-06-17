@@ -13,6 +13,11 @@ public class SampleService {
         this.restTemplate = restTemplate;
     }
 
+    public Movie findAll() {
+        Movie movie = restTemplate.getForEntity("http://localhost:8080/movies/", Movie.class).getBody();
+        return movie;
+    }
+
     public Movie findMovieById(Long id) {
         Movie movie = restTemplate.getForEntity("http://localhost:8080/movies/" + id, Movie.class).getBody();
         return movie;

@@ -13,6 +13,11 @@ public class SampleController {
         this.sampleService = sampleService;
     }
 
+        @GetMapping
+    public ResponseEntity<Movie> findAll() {
+        return ResponseEntity.ok(sampleService.findAll());
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Movie> getMovie(@PathVariable Long id){
         return ResponseEntity.ok(sampleService.findMovieById(id));
