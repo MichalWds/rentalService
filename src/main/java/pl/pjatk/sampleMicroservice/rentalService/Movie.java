@@ -1,16 +1,16 @@
 package pl.pjatk.sampleMicroservice.rentalService;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.ApiModelProperty;
 
 public class Movie {
 
+    @ApiModelProperty(notes = "This is an id of the movie", required = true, value = "id", example = "1")
     private Long id;
+    @ApiModelProperty(notes = "This is a name of the movie", required = true, value = "name", example = "xd")
     private String name;
-
+    @ApiModelProperty(notes = "This is a category id of the movie", required = true, value = "category", example = "Horror")
     private boolean isAvailable;
 
-//    @JsonIgnore
     private Category category;
 
     public Movie() {
