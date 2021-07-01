@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 
+import java.net.ConnectException;
+
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @ControllerAdvice
@@ -34,5 +36,10 @@ public class GlobalExceptionHandler {
             return new ResponseEntity<>("GateWay TimeOut: 504", HttpStatus.GATEWAY_TIMEOUT);
         }
         return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @ExceptionHandler(ConnectException.class)
+    public ResponseEntity<String> handleHttpConnectEx(HttpServerErrorException ex) {
+        return new ResponseEntity<>("GateWay TimeOut: 504", HttpStatus.GATEWAY_TIMEOUT);
     }
 }
